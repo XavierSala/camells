@@ -87,7 +87,7 @@ public class Pista {
         pantalla.setSize((int) liniaFinal + POSICIOINICIAL * 2, camells.size()
                 * SEPARACIO);
 
-        pintaPantalla();
+        pintaPista();
         preparatsLlestos();
         camellMesRapid = aCorrer();
         mostraResultat(camellMesRapid);
@@ -126,15 +126,16 @@ public class Pista {
     /**
      * Pinta la pantalla i afegeix l'estrella de seguiment.
      */
-    private void pintaPantalla() {
+    private void pintaPista() {
 
+        // Pinta la estrella que segueix el líder de la carrera
         estrella = new GImage("star2.jpg");
         estrella.setLocation(liniaFinal, POSICIOINICIAL);
         pantalla.add(estrella);
 
         int posicio = POSICIOINICIAL;
-        // Pinta camells i les línies
-        for (int i = 0; i < camells.size(); i++) {
+        // Pinta les línies horitzontals de les pistes
+        for (int i = 0; i <= camells.size(); i++) {
             GLine linia = new GLine(0, posicio - POSICIOINICIAL, liniaFinal,
                     posicio - POSICIOINICIAL);
             linia.setColor(Color.GRAY);
