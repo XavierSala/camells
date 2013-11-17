@@ -4,6 +4,7 @@ import acm.graphics.GImage;
 
 /**
  * Classe que implementa els camells.
+ *
  * @author xavier
  *
  */
@@ -18,27 +19,35 @@ public class Camell {
      */
     private int id;
     /**
+     * Velocitat per defecte.
+     */
+    private static final int VELOCITATDEFECTE = 10;
+    /**
+     * Velocitat màxima del camell.
+     */
+    private int maximaVelocitat;
+    /**
+     * Imatges possibles dels camells.
+     */
+    private String[] imatgesCamells = {"vermell.jpg", "verd.jpg", "groc.jpg",
+            "blau.jpg", "negre.jpg", "taronja.jpg", "rosa.jpg" };
+
+    /**
      * Imatge del camell.
      */
     private GImage imatge;
-    /**
-     * Lloc al que ha d'arribar el camell per estar en la meta.
-     */
-    private double objectiu;
 
     /**
      * Constructor del camell.
-     * @param imatgeDelCamell Imatge que represetarà el camell.
      */
-    public Camell(final String imatgeDelCamell) {
-        if (imatgeDelCamell != null) {
-            this.imatge = new GImage(imatgeDelCamell);
-        } else {
-            this.imatge = new GImage("default.jpg");
-        }
-        objectiu = -1;
+    public Camell() {
+        int triaColor = (int) (Math.random() * imatgesCamells.length);
+        this.imatge = new GImage(imatgesCamells[triaColor]);
+
         id = lastID;
         lastID++;
+
+        maximaVelocitat = VELOCITATDEFECTE;
     }
 
     /**
@@ -47,6 +56,7 @@ public class Camell {
     public final int getID() {
         return id;
     }
+
     /**
      * @return Retorna la imatge del camell.
      */
@@ -57,13 +67,17 @@ public class Camell {
     /**
      * @return posicioX
      */
-    public final double getPosicioX() {
-        return imatge.getX();
+    public final double getPosicio() {
+        return imatge.getX() + imatge.getWidth();
     }
+
     /**
      * Defineix la posició del camell.
-     * @param x posició X
-     * @param y posició Y
+     *
+     * @param x
+     *            posició X
+     * @param y
+     *            posició Y
      */
     public final void setPosicio(final double x, final double y) {
         imatge.setLocation(x, y);
@@ -71,33 +85,31 @@ public class Camell {
 
     /**
      * Mou el camell en la direcció especificada.
-     * @param x píxels en la direcció x
-     * @param y píxels en la direcció y
+     *
+     * @param x
+     *            píxels en la direcció x
+     * @param y
+     *            píxels en la direcció y
      */
     public final void mou(final double x, final double y) {
-        imatge.move(x,  y);
+        imatge.move(x, y);
     }
 
     /**
-     * Defineix on està la línea de meta.
-     * @param x posició de la meta
+     * @return velocitat màxima a la que pot anar el camell
      */
-    public final void setObjectiu(final double x) {
-        objectiu = x - imatge.getWidth();
+    public final int getMaximaVelocitat() {
+        return maximaVelocitat;
     }
 
     /**
-     * @return Retorna si hem arribat a la meta o no
+     * Definir la velocitat màxima a la que pot anar el camell.
+     *
+     * @param maxima
+     *            velocitat
      */
-    public final boolean heArribat() {
-        return (imatge.getX() > objectiu);
+    public final void setMaximaVelocitat(final int maxima) {
+        maximaVelocitat = maxima;
     }
 
-    /**
-     * Si ha arribat retorna els punts que li han sobrat al camell.
-     * @return Retorna quants punts li han sobrat al camell.
-     */
-    public final double getPuntsDeSobres() {
-        return (imatge.getX() - objectiu);
-    }
 }
