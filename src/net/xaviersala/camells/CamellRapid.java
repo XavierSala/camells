@@ -2,16 +2,28 @@ package net.xaviersala.camells;
 
 import acm.graphics.GImage;
 
+/**
+ * Classe que se n'encarrega de generar camells ràpids. Els camells
+ * ràpids es caracteritzen perquè en cas d'anar a velocitat màxima
+ * el resultat es duplica.
+ *
+ * @author xavier
+ *
+ */
 public class CamellRapid extends Camell {
 
+    /**
+     * Creació d'un camell ràpid.
+     */
     public CamellRapid() {
         super();
         imatge = new GImage("rapid.jpg");
     }
 
       /**
-     * Mou el camell en la direcció especificada. Però com que és un camell ràpid
-     * en el cas en que la velocitat sigui la màxima es mou el doble de punts
+     * Mou el camell en la direcció especificada. Però com que és un camell
+     * ràpid en el cas en que la velocitat sigui la màxima es mou el doble de
+     * punts.
      *
      * @param x
      *            píxels en la direcció x
