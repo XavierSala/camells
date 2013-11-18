@@ -11,5 +11,8 @@ que fan coses diferents.
 
 La idea és que serveixi d'exemple senzill per veure com funciona la herència en
 programació orientada a objectes afegint-hi camells que es comportin de diferent
-forma al córrer
+forma al córrer.
+
+S'ha definit una classe abstracta de camell per fer que les imatges es defineixin
+directament en les classes derivades i que no es pugi crear
 

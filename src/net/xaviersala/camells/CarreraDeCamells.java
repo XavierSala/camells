@@ -49,25 +49,23 @@ public class CarreraDeCamells extends GraphicsProgram {
      * @return El camell creat
      */
     private Camell creaCamell() {
-
-        int quin = (int) (Math.random() * TIPUSCAMELLS);
-
         Camell retorn = null;
 
+        TipusCamells quin = TipusCamells.randomCamell();
         switch (quin) {
-            case 1:
+            case CAMELL_NORMAL:
                 retorn = new CamellNormal();
                 break;
-            case 2:
+            case CAMELL_FLIPAT:
                 retorn = new CamellFlipat();
                 break;
-            case 3:
+            case CAMELL_FONDISTA:
                 retorn = new CamellFondista();
                 break;
-            case 4:
+            case CAMELL_RAPID:
                 retorn = new CamellRapid();
                 break;
-            case 0:
+            case CAMELL_ANTISENAR:
                 retorn = new CamellAntiSenar();
                 break;
             default:
