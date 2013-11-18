@@ -8,7 +8,7 @@ import acm.graphics.GImage;
  * @author xavier
  *
  */
-public class Camell {
+public abstract class Camell {
     /**
      * Comptador de camells.
      */
@@ -21,28 +21,22 @@ public class Camell {
     /**
      * Velocitat per defecte.
      */
-    private static final int VELOCITATDEFECTE = 10;
+    private static final int VELOCITATDEFECTE = 20;
     /**
      * Velocitat màxima del camell.
      */
     private int maximaVelocitat;
-    /**
-     * Imatges possibles dels camells.
-     */
-    private String[] imatgesCamells = {"vermell.jpg", "verd.jpg", "groc.jpg",
-            "blau.jpg", "negre.jpg", "taronja.jpg", "rosa.jpg" };
+
 
     /**
      * Imatge del camell.
      */
-    private GImage imatge;
+    protected GImage imatge;
 
     /**
      * Constructor del camell.
      */
     public Camell() {
-        int triaColor = (int) (Math.random() * imatgesCamells.length);
-        this.imatge = new GImage(imatgesCamells[triaColor]);
 
         id = lastID;
         lastID++;
@@ -91,7 +85,7 @@ public class Camell {
      * @param y
      *            píxels en la direcció y
      */
-    public final void mou(final double x, final double y) {
+    public void mou(final double x, final double y) {
         imatge.move(x, y);
     }
 

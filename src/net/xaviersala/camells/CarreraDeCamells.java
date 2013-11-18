@@ -7,7 +7,7 @@ package net.xaviersala.camells;
 import acm.program.GraphicsProgram;
 
 /**
- * @author Xavier
+ * @author Xavier Sala
  *
  */
 public class CarreraDeCamells extends GraphicsProgram {
@@ -33,11 +33,37 @@ public class CarreraDeCamells extends GraphicsProgram {
 
         Pista pistaDeCarreres = new Pista(this, POSICIOFINAL);
         for (int i = 0; i < NUMCAMELLS; i++) {
-            pistaDeCarreres.afegirCamell(new Camell());
+            pistaDeCarreres.afegirCamell(creaCamell());
         }
 
         pistaDeCarreres.iniciaCarrera();
 
+    }
+    
+    private Camell creaCamell() {
+    	
+    	int quin = (int) (Math.random()*5);
+    	
+    	Camell retorn = null;
+    	
+    	switch (quin) {
+	    	case 1:
+	    		retorn = new CamellNormal();
+	    		break;
+	    	case 2:
+	    		retorn = new CamellFlipat();
+	    		break;
+	    	case 3:
+	    		retorn = new CamellFondista();
+	    		break;
+	    	case 4:
+	    		retorn = new CamellRapid();
+	    		break;
+	    	case 0:
+	    		retorn = new CamellAntiSenar();
+	    		break;
+    	}
+    	return retorn;    	    	
     }
 
 }
